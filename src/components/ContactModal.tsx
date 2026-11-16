@@ -79,13 +79,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           text: data.message || "Thank you! Your message has been sent successfully.",
         });
 
-        // Trigger celebratory confetti effect in Light Blue & Cyan tones
+        // Trigger celebratory confetti effect in Royal Purple & Emerald tones
         try {
           confetti({
             particleCount: 85,
             spread: 75,
             origin: { y: 0.6 },
-            colors: ["#0284c7", "#0ea5e9", "#38bdf8", "#bae6fd", "#10b981"],
+            colors: ["#7028f5", "#8e54ff", "#a77cff", "#10b981", "#f59e0b"],
           });
         } catch {
           // Ignore if canvas-confetti is not supported
@@ -137,10 +137,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ type: "spring", damping: 26, stiffness: 320 }}
-            className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#bae6fd] overflow-hidden z-10"
+            className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#e9e0ff] overflow-hidden z-10"
           >
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] p-6 text-white relative">
+            <div className="bg-gradient-to-r from-[#7028f5] via-[#8e54ff] to-[#a77cff] p-6 text-white relative">
               <button
                 type="button"
                 onClick={onClose}
@@ -154,7 +154,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </span>
               <h3 className="text-xl font-extrabold m-0 text-white">Let&apos;s Build Something Great</h3>
               <p className="text-xs text-white/90 mt-1 mb-0 leading-relaxed">
-                Have a Shopify project, theme customization, or digital opportunity? Send a message directly below!
+                Have a Shopify project, frontend development, or digital opportunity? Send a message directly below!
               </p>
             </div>
 
@@ -192,8 +192,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               {/* Name & Email Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-bold text-[#0f172a] mb-1.5">
-                    Your Name <span className="text-[#0284c7]">*</span>
+                  <label className="block text-xs font-bold text-[#171a48] mb-1.5">
+                    Your Name <span className="text-[#7028f5]">*</span>
                   </label>
                   <div className="relative">
                     <User size={15} className="absolute left-3 top-3 text-[#94a3b8]" />
@@ -203,14 +203,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       placeholder="e.g. Alex Morgan"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#f8fafc] border border-[#e2e8f0] rounded-xl focus:outline-none focus:border-[#0284c7] focus:bg-white focus:ring-2 focus:ring-[#bae6fd]/50 transition-all text-[#0f172a]"
+                      className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#faf8ff] border border-[#e9e0ff] rounded-xl focus:outline-none focus:border-[#7028f5] focus:bg-white focus:ring-2 focus:ring-[#7028f5]/20 transition-all text-[#171a48]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#0f172a] mb-1.5">
-                    Your Email <span className="text-[#0284c7]">*</span>
+                  <label className="block text-xs font-bold text-[#171a48] mb-1.5">
+                    Your Email <span className="text-[#7028f5]">*</span>
                   </label>
                   <div className="relative">
                     <Mail size={15} className="absolute left-3 top-3 text-[#94a3b8]" />
@@ -220,7 +220,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       placeholder="e.g. alex@company.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#f8fafc] border border-[#e2e8f0] rounded-xl focus:outline-none focus:border-[#0284c7] focus:bg-white focus:ring-2 focus:ring-[#bae6fd]/50 transition-all text-[#0f172a]"
+                      className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#faf8ff] border border-[#e9e0ff] rounded-xl focus:outline-none focus:border-[#7028f5] focus:bg-white focus:ring-2 focus:ring-[#7028f5]/20 transition-all text-[#171a48]"
                     />
                   </div>
                 </div>
@@ -228,23 +228,23 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               {/* Subject */}
               <div>
-                <label className="block text-xs font-bold text-[#0f172a] mb-1.5">Subject</label>
+                <label className="block text-xs font-bold text-[#171a48] mb-1.5">Subject</label>
                 <div className="relative">
                   <MessageSquare size={15} className="absolute left-3 top-3 text-[#94a3b8]" />
                   <input
                     type="text"
-                    placeholder="e.g. Shopify Store Setup or Custom App"
+                    placeholder="e.g. Frontend Development or Shopify Store Setup"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#f8fafc] border border-[#e2e8f0] rounded-xl focus:outline-none focus:border-[#0284c7] focus:bg-white focus:ring-2 focus:ring-[#bae6fd]/50 transition-all text-[#0f172a]"
+                    className="w-full pl-9 pr-3 py-2.5 text-xs bg-[#faf8ff] border border-[#e9e0ff] rounded-xl focus:outline-none focus:border-[#7028f5] focus:bg-white focus:ring-2 focus:ring-[#7028f5]/20 transition-all text-[#171a48]"
                   />
                 </div>
               </div>
 
               {/* Message */}
               <div>
-                <label className="block text-xs font-bold text-[#0f172a] mb-1.5">
-                  Message <span className="text-[#0284c7]">*</span>
+                <label className="block text-xs font-bold text-[#171a48] mb-1.5">
+                  Message <span className="text-[#7028f5]">*</span>
                 </label>
                 <textarea
                   rows={4}
@@ -252,7 +252,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   placeholder="Tell me about your project, timeline, or requirements..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-3 text-xs bg-[#f8fafc] border border-[#e2e8f0] rounded-xl focus:outline-none focus:border-[#0284c7] focus:bg-white focus:ring-2 focus:ring-[#bae6fd]/50 transition-all text-[#0f172a] resize-none"
+                  className="w-full p-3 text-xs bg-[#faf8ff] border border-[#e9e0ff] rounded-xl focus:outline-none focus:border-[#7028f5] focus:bg-white focus:ring-2 focus:ring-[#7028f5]/20 transition-all text-[#171a48] resize-none"
                 />
               </div>
 
@@ -264,7 +264,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#0ea5e9] text-white font-bold text-xs hover:brightness-105 active:scale-95 transition-all shadow-md hover:shadow-lg disabled:opacity-70 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#7028f5] to-[#8e54ff] text-white font-bold text-xs hover:brightness-105 active:scale-95 transition-all shadow-md hover:shadow-lg disabled:opacity-70 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>

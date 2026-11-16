@@ -3,91 +3,87 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { MapPin, GraduationCap, Briefcase, Code, ShoppingCart, BarChart3 } from "lucide-react";
+import { portfolioData } from "@/data/portfolioData";
 
-/**
- * ==============================================================================
- * ABOUT ME SECTION COMPONENT (Light Blue & Deep Slate Theme)
- * ==============================================================================
- * Displays the workspace photo with floating "1+ Years Experience" badge,
- * personal philosophy on Shopify development, and a list of key credentials.
- */
 export default function About() {
+  const { personal } = portfolioData;
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="about-panel container"
-      id="about"
-    >
-      {/* Workspace photo placeholder with floating badge */}
-      <div className="about-photo">
-        <Image
-          src="/assets/about-workspace.png"
-          alt="Workspace desk placeholder (Replace in /public/assets/about-workspace.png)"
-          width={500}
-          height={280}
-          className="rounded-[16px] w-full h-full object-cover shadow-sm"
-        />
-
-        {/* Floating experience badge in Light Blue theme */}
-        <motion.div
-          whileHover={{ scale: 1.05, y: -2 }}
-          transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="experience-badge"
-        >
-          <span className="badge-icon" aria-hidden="true">
-            ▥
-          </span>
-          <span>
-            <strong>1+ Years</strong>
-            <small>of Experience</small>
-          </span>
-        </motion.div>
-      </div>
-
-      {/* Narrative Copy with High Contrast & Readability */}
-      <div className="about-copy">
-        <div className="eyebrow">
-          <i aria-hidden="true" />
-          About Me
+    <section className="site-container" id="about">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="overlapping-about-card"
+      >
+        {/* 1. Workspace Media & Experience Badge */}
+        <div className="about-media-box">
+          <Image
+            src={personal.workspaceImage}
+            alt="Workspace with Shopify Setup"
+            width={440}
+            height={260}
+            className="about-media-img"
+          />
+          <div className="about-media-badge">
+            <div className="w-8 h-8 rounded-lg bg-[#edd8ff80] text-[#7028f5] grid place-items-center">
+              <BarChart3 size={18} />
+            </div>
+            <div>
+              <strong className="block text-sm font-extrabold text-gray-900 leading-none">
+                {personal.experienceYears}
+              </strong>
+              <small className="text-[11px] text-gray-500">{personal.experienceLabel}</small>
+            </div>
+          </div>
         </div>
-        <h2>
-          Turning Ideas into
-          <br />
-          Scalable Digital Solutions
-        </h2>
-        <p>
-          I&apos;m a <strong>Shopify developer</strong> with a passion for building fast, user-friendly,
-          and conversion-focused online stores. I bridge the gap between technical engineering,
-          modern UI/UX design, and business conversion goals to deliver high-impact digital experiences.
-        </p>
-      </div>
 
-      {/* Quick Facts List */}
-      <ul className="quick-facts" aria-label="Key facts about Rony">
-        <li>
-          <span aria-hidden="true">📍</span>
-          Dhaka, Bangladesh
-        </li>
-        <li>
-          <span aria-hidden="true">🎓</span>
-          B.Sc. in CSE, IUBAT
-        </li>
-        <li>
-          <span aria-hidden="true">🛍️</span>
-          Shopify Developer
-        </li>
-        <li>
-          <span aria-hidden="true">💻</span>
-          Frontend Enthusiast
-        </li>
-        <li>
-          <span aria-hidden="true">🛒</span>
-          E-commerce Focused
-        </li>
-      </ul>
-    </motion.section>
+        {/* 2. Narrative Bio */}
+        <div className="about-body-col">
+          <div className="section-kicker">
+            <span className="section-kicker-dash" aria-hidden="true" />
+            <span>About Me</span>
+          </div>
+          <h3>{personal.aboutHeading}</h3>
+          <p>{personal.aboutText}</p>
+        </div>
+
+        {/* 3. Credentials Fact List */}
+        <div className="about-facts-col" aria-label="Key Facts">
+          <div className="fact-row">
+            <div className="fact-icon-pill">
+              <MapPin size={16} />
+            </div>
+            <span>{personal.location}</span>
+          </div>
+          <div className="fact-row">
+            <div className="fact-icon-pill">
+              <GraduationCap size={16} />
+            </div>
+            <span>{personal.degreeShort}</span>
+          </div>
+          <div className="fact-row">
+            <div className="fact-icon-pill">
+              <Briefcase size={16} />
+            </div>
+            <span>Shopify Developer</span>
+          </div>
+          <div className="fact-row">
+            <div className="fact-icon-pill">
+              <Code size={16} />
+            </div>
+            <span>Frontend Enthusiast</span>
+          </div>
+          <div className="fact-row">
+            <div className="fact-icon-pill">
+              <ShoppingCart size={16} />
+            </div>
+            <span>E-Commerce Focused</span>
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }

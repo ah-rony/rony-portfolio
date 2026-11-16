@@ -4,64 +4,81 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Skills from "@/components/Skills";
+import Process from "@/components/Process";
+import Services from "@/components/Services";
 import Projects from "@/components/Projects";
+import CtaBanner from "@/components/CtaBanner";
+import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import BottomPanels from "@/components/BottomPanels";
-import ContactBanner from "@/components/ContactBanner";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import ContactModal from "@/components/ContactModal";
 
-/**
- * ==============================================================================
- * MAIN PORTFOLIO PAGE — MD. Ainal Haque Rony
- * ==============================================================================
- * Connects all portfolio components into a unified responsive layout wrapped
- * with ambient gradient shells and interactive modal states.
- */
-export default function PortfolioPage() {
-  // Global modal state for contact inquiries
+export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  // Handlers to open and close the contact dialog
-  const handleOpenContact = () => setIsContactModalOpen(true);
-  const handleCloseContact = () => setIsContactModalOpen(false);
+  const handleOpenContact = () => {
+    // Scroll to contact section or open modal
+    const contactEl = document.getElementById("contact");
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setIsContactModalOpen(true);
+    }
+  };
+
+  const handleOpenModal = () => setIsContactModalOpen(true);
+  const handleCloseModal = () => setIsContactModalOpen(false);
 
   return (
-    <div className="page-shell">
-      {/* 1. Header with branding and navigation */}
+    <div className="min-h-screen bg-white">
+      {/* 1. Sticky Navigation Bar */}
       <Header onOpenContact={handleOpenContact} />
 
       <main>
-        {/* 2. Hero banner with title, CTA, floating orbit and portrait */}
-        <Hero onOpenContact={handleOpenContact} />
+        {/* 2. Hero Section: Pastel 3-stop mesh gradient with connected stat band */}
+        <Hero onOpenContact={handleOpenModal} />
 
-        {/* 3. About me panel with workspace photo and quick facts */}
+        {/* 3. Overlapping Floating About Card */}
         <About />
 
-        {/* 4. Skills section highlighting 7 core technologies */}
-        <Skills onOpenContact={handleOpenContact} />
+        {/* 4. Work Process: 2x2 Grid with Interactive Flipping Badges */}
+        <Process />
 
-        {/* 5. Projects showcase displaying recent e-commerce works */}
-        <Projects onOpenContact={handleOpenContact} />
+        {/* 5. Services: What I Do? with Purple Left-Border Hover Accent */}
+        <Services />
 
-        {/* 6. Experience timeline detailing career trajectory */}
-        <Experience onOpenContact={handleOpenContact} />
+        {/* 6. Featured Projects Showcase */}
+        <Projects onOpenContact={handleOpenModal} />
 
-        {/* 7. Bottom panels: Academic background (CGPA 3.57) & client testimonial */}
+        {/* 7. Midnight Slate CTA Banner */}
+        <CtaBanner onOpenContact={handleOpenContact} />
+
+        {/* 8. Technical Stack (7 Core Technologies) */}
+        <Skills />
+
+        {/* 9. Career Journey Timeline */}
+        <Experience />
+
+        {/* 10. Education (CGPA 3.57) & Kind Words Testimonial */}
         <BottomPanels />
 
-        {/* 8. Call-to-action banner with animated paper plane */}
-        <ContactBanner onOpenContact={handleOpenContact} />
+        {/* 11. Floating Contact Card with Minimalist Underline Form */}
+        <ContactSection />
       </main>
 
-      {/* 9. Site footer with copyright and location */}
+      {/* 12. Deep Slate Footer */}
       <Footer />
 
-      {/* 10. Interactive Contact Modal for free email dispatch */}
+      {/* 13. Floating Back to Top Button */}
+      <BackToTop />
+
+      {/* 14. Interactive Contact / CV Modal */}
       <ContactModal
         isOpen={isContactModalOpen}
-        onClose={handleCloseContact}
+        onClose={handleCloseModal}
       />
     </div>
   );
